@@ -1,0 +1,81 @@
+/* Contenedor principal de la sección */
+.contactos {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título H2 */
+.contactos h2 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de cada item (Tarjeta) */
+.item-contacto {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el mouse sobre un contacto */
+.item-contacto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+/* Imagen de perfil */
+.item-contacto img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f0f0f0;
+    margin-right: 20px;
+}
+
+/* Estilo para los párrafos dentro del item */
+.item-contacto p {
+    margin: 0;
+}
+
+/* Nombre (el primer p) */
+.item-contacto p:nth-child(2) {
+    font-weight: bold;
+    color: #222;
+    font-size: 1.1rem;
+    flex-grow: 1; /* Esto empuja el teléfono hacia la derecha */
+}
+
+/* Teléfono (el segundo p) */
+.item-contacto p:nth-child(3) {
+    color: #666;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .item-contacto {
+        flex-direction: column;
+        text-align: center;
+    }
+    .item-contacto img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .item-contacto p:nth-child(2) {
+        margin-bottom: 5px;
+    }
+}

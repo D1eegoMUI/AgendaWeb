@@ -1,0 +1,46 @@
+/* Estilo del contenedor individual de cada contacto */
+.item-contacto {
+    display: flex;
+    align-items: center; /* Alinea verticalmente al centro imagen y textos */
+    gap: 16px;           /* Espacio entre los elementos internos */
+    padding: 12px 16px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria sutil */
+    transition: background-color 0.2s ease;
+}
+
+/* Efecto hover para indicar que es interactivo */
+.item-contacto:hover {
+    background-color: #f9f9f9;
+}
+
+/* Estilo de la imagen de perfil */
+.item-contacto img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;   /* Hace la imagen circular */
+    object-fit: cover;    /* Evita que la imagen se deforme */
+    background-color: #ddd;
+}
+
+/* Estilo para el nombre (Primer párrafo después de la imagen) */
+.item-contacto p:nth-of-type(1) {
+    flex-grow: 1;         /* Hace que el nombre ocupe el espacio disponible */
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Estilo para el teléfono (Segundo párrafo) */
+.item-contacto p:nth-of-type(2) {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    font-family: monospace; /* Da un look de número de teléfono clásico */
+}
+
+/* Quitar la línea divisoria al último elemento */
+.item-contacto:last-child {
+    border-bottom: none;
+}
