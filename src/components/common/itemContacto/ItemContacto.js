@@ -11,9 +11,16 @@ let ItemContacto = (imgContacto, nombre, telefono) => {
     let etiquetaTelefono = document.createElement('p');
     etiquetaTelefono.textContent = telefono;
 
+    let infoContenedor = document.createElement('div');
+    infoContenedor.style.display = "flex";
+    infoContenedor.style.flexDirection = "column";
+
+    infoContenedor.appendChild(etiquetaNombre);
+    infoContenedor.appendChild(etiquetaTelefono);
+
     div.appendChild(etiquetaImg);
-    div.appendChild(etiquetaNombre);
-    div.appendChild(etiquetaTelefono);
+    div.appendChild(infoContenedor);
+    div.appendChild(infoContenedor);
 
     return div;
 };

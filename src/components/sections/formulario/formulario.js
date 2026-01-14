@@ -1,4 +1,5 @@
 import { ContactList } from "../contactos/db.js";
+
 let Formulario = () => {
     let sectionForm = document.createElement('section');
     sectionForm.className = "formulario-contacto";
@@ -27,8 +28,8 @@ let Formulario = () => {
         return { container, input };
     };
 
-    let nombreCampo = crearCampo("Nombre:", "text", "Ej: Juan Pérez");
-    let telCampo = crearCampo("Teléfono:", "tel", "Ej: +54 11...");
+    let nombreCampo = crearCampo("Nombre:", "text", "Ej: Giorno Giovanna");
+    let telCampo = crearCampo("Teléfono:", "tel", "Ej: +502 1234 5678");
 
     let btnSubmit = document.createElement("button");
     btnSubmit.type = "submit";

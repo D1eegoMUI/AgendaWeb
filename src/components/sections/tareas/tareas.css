@@ -1,0 +1,101 @@
+/* Contenedor general de la tarjeta */
+.tarea-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    border-left: 8px solid #cbd5e1; /* Color base gris */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarea-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Variaciones de color por estado */
+.tarea-card.pendiente { 
+    border-left-color: var(--warning); 
+    background: linear-gradient(to right, #fff9f0, #fff);
+}
+
+.tarea-card.en-proceso { 
+    border-left-color: var(--primary); 
+    background: linear-gradient(to right, #f0f7ff, #fff);
+}
+
+.tarea-card.completada { 
+    border-left-color: var(--success); 
+    background: #f8fafc;
+    opacity: 0.8;
+}
+
+.tarea-card.completada h3 {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+/* Estilo de los textos dentro de la card */
+.tarea-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+}
+
+.tarea-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Botones y Selectores dentro de la card */
+.tarea-card button, 
+.tarea-card select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--border);
+}
+
+/* Botón Inspeccionar específico */
+.tarea-card button {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border: 1px solid #cbd5e1;
+    align-self: flex-start; /* No ocupa todo el ancho */
+}
+
+.tarea-card button:hover {
+    background-color: #e2e8f0;
+    border-color: #94a3b8;
+}
+
+/* Selector de estado (Select) */
+.tarea-card select {
+    background-color: white;
+    color: var(--primary-dark);
+    border-color: var(--primary);
+    width: 140px;
+}
+
+.tarea-card select:focus {
+    outline: none;
+    ring: 2px solid var(--primary);
+}
+
+/* Contenedor de acciones para alinear botones a la derecha o en fila */
+.tarea-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
+}

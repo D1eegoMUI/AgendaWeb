@@ -1,0 +1,20 @@
+let TareaList = [
+    {
+        id: Date.now() + 1,
+        nombre: "Comprar alimentos",
+        descripcion: "Ir al mercado por frutas y verduras",
+        relevancia: "Alta",
+        dificultad: "Baja",
+        estado: "Pendiente"
+    },
+    {
+        id: Date.now() + 2,
+        nombre: "Estudiar para el examen",
+        descripcion: "Repasar los módulos de JavaScript",
+        relevancia: "Media",
+        dificultad: "Alta",
+        estado: "En Proceso"
+    }
+];
+
+export { TareaList };

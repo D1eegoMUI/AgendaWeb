@@ -1,23 +1,43 @@
-* {
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --success: #22c55e;
+    --warning: #f59e0b;
+}
+
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
 }
 
-#app{
-    width: 100vw;
-    height: 100vh;
+#app {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 10px;
+    grid-template-columns: 250px 1fr; /* Menú lateral fijo */
+    min-height: 100vh;
 }
 
+/* Navegación Lateral */
 #nav {
-    height: 100vh;
-    border: 2px solid #520b0bff;
+    background-color: #0f172a;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
 }
 
+/* Contenedor de contenido */
 #container {
-    height: 100vh;
-    border: 2px solid #520b0bff;
+    padding: 2rem;
+    overflow-y: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
 }

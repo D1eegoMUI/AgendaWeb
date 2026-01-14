@@ -1,81 +1,80 @@
-/* Contenedor principal de la sección */
 .contactos {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex; /* Cambiamos de grid a flex */
+    flex-direction: column; /* Alineamos los elementos en columna (hacia abajo) */
+    gap: 1rem; /* Espacio entre cada contacto */
+    max-width: 600px; /* Opcional: limita el ancho para que no se vea tan estirado en pantallas grandes */
+    margin: 0 auto; /* Centra la lista en el contenedor principal */
 }
 
-/* Título H2 */
-.contactos h2 {
-    color: #333;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-/* Contenedor de cada item (Tarjeta) */
+/* Ajuste opcional para que la tarjeta ocupe el 100% del ancho del contenedor */
 .item-contacto {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Efecto al pasar el mouse */
+.item-contacto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--primary);
+}
+
+/* Indicador lateral sutil */
+.item-contacto::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.item-contacto:hover::before {
+    opacity: 1;
+}
+
+/* Imagen del contacto (Avatar) */
+.item-contacto img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    object-fit: cover;
+    border: 3px solid #f8fafc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de textos para mejor control */
+.item-contacto div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Nombre del contacto */
+.item-contacto p:first-of-type {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+/* Teléfono del contacto */
+.item-contacto p:last-of-type {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
     display: flex;
     align-items: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    gap: 5px;
 }
 
-/* Efecto al pasar el mouse sobre un contacto */
-.item-contacto:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    cursor: pointer;
-}
-
-/* Imagen de perfil */
-.item-contacto img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: #f0f0f0;
-    margin-right: 20px;
-}
-
-/* Estilo para los párrafos dentro del item */
-.item-contacto p {
-    margin: 0;
-}
-
-/* Nombre (el primer p) */
-.item-contacto p:nth-child(2) {
-    font-weight: bold;
-    color: #222;
-    font-size: 1.1rem;
-    flex-grow: 1; /* Esto empuja el teléfono hacia la derecha */
-}
-
-/* Teléfono (el segundo p) */
-.item-contacto p:nth-child(3) {
-    color: #666;
-    font-size: 0.9rem;
-    background-color: #f8f9fa;
-    padding: 4px 10px;
-    border-radius: 15px;
-}
-
-/* Ajuste para móviles */
-@media (max-width: 480px) {
-    .item-contacto {
-        flex-direction: column;
-        text-align: center;
-    }
-    .item-contacto img {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    .item-contacto p:nth-child(2) {
-        margin-bottom: 5px;
-    }
+/* Agregar un icono de teléfono antes del número (opcional con emoji) */
+.item-contacto p:last-of-type::before {
+    content: "📞";
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
