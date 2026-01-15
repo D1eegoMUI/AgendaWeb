@@ -28,9 +28,28 @@ body {
     background-color: #0f172a;
     padding: 2rem 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; /* Alineación vertical */
+    height: 100vh;          /* Altura completa de la ventana */
+    position: sticky;
+    top: 0;
     color: white;
+    box-sizing: border-box; /* Asegura que el padding no rompa el alto */
+}
+
+#btn-logout-at-bottom, .btn-logout {
+    margin-top: auto;   
+    padding: 12px;
+    background-color: #ef4444; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+#btn-logout-at-bottom:hover, .btn-logout:hover {
+    background-color: #dc2626;
 }
 
 /* Contenedor de contenido */

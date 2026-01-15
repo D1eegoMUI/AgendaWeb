@@ -20,6 +20,14 @@ let login = function () {
     let button = document.createElement("button");
     button.innerHTML = "Iniciar Sesion";
     
+  //Nota de credenciales de prueba
+    let notaCredenciales = document.createElement("div");
+    notaCredenciales.classList.add("login-note");
+    notaCredenciales.innerHTML = `
+        <p><strong>Acceso de prueba:</strong></p>
+        <p>Usuario: admin | Password: 1234</p>
+    `;
+
     button.addEventListener("click", () => {
         if (user.value === User && password.value === Password) {
             alert("¡Bienvenido al sistema!");
@@ -33,6 +41,7 @@ let login = function () {
     login.appendChild(user);
     login.appendChild(password);
     login.appendChild(button);
+    login.appendChild(notaCredenciales);
 
     return login;
 }

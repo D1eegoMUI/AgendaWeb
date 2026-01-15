@@ -1,6 +1,6 @@
 import { Button } from "./components/common/Button/Button.js";
 import { Contactos } from "./components/sections/contactos/Contactos.js";
-import { viewContacts, viewFormulario, viewTareas, viewNewTarea } from "./components/layout/nav/NavControles.js";
+import { viewContacts, viewFormulario, viewTareas, viewNewTarea, logout } from "./components/layout/nav/NavControles.js";
 
 let app = document.getElementById("app");
 
@@ -15,7 +15,13 @@ nav.appendChild(Button("ToDoList", "todo", "Tareas.svg", viewTareas
 ));
 nav.appendChild(Button("Crear Tarea", "plus", "AgregarTarea.svg", viewNewTarea
 ));
+let btnLogout = Button("Cerrar sesión", "Logout", "Logout.svg", logout
+);
 
+btnLogout.id = "btn-logout-at-bottom";
+nav.appendChild(btnLogout);
+
+//contenedor principal
 let container = document.getElementById("container");
 
 container.innerHTML = "";//limpio el contenedor

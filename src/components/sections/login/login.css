@@ -1,29 +1,154 @@
-/* login.css */
+/* 1. Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Evita scrolls innecesarios por el video */
+}
+
+/* 2. Contenedor Maestro (Centrado) */
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. Estilos del Video de Fondo */
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2; /* Detrás de todo */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Capa oscura opcional para que el login resalte más */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Oscurece un poco el video */
+    z-index: -1;
+}
+
+/* 4. El Contenedor de Login */
 .login-container {
+    position: relative;
+    width: 90%;
     max-width: 400px;
-    margin: 100px auto;
     padding: 2.5rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    
+    /* Transparencia y Efectos Visuales */
+    background: rgba(255, 255, 255, 0.8); 
+    -webkit-backdrop-filter: blur(12px); /* Soporte Safari */
+    backdrop-filter: blur(12px); 
+    
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil brillante */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     text-align: center;
+    z-index: 10;
+
+        background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* 5. Elementos Internos */
+.login-container h2 {
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .login-container input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.login-container input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .login-container button {
     background: #2563eb;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.login-container button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.login-container button:active {
+    transform: translateY(0);
+}
+
+/* Asegura que el body y root ocupen toda la pantalla */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1; /* Por encima del video */
+}
+
+
+.background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(224, 215, 215, 0.4); /* Oscurece el video */
+    z-index: -1;
 }

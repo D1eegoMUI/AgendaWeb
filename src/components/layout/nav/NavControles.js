@@ -25,4 +25,12 @@ let viewNewTarea = function () {
     container.appendChild(NewTarea());
 }
 
-export { viewContacts, viewFormulario, viewTareas, viewNewTarea };
+let logout = function () {
+    // Si usas localStorage o sessionStorage para el login, límpialos aquí:
+    // localStorage.removeItem("token"); 
+
+    // Redirige al index.html
+    window.location.href = "../index.html";
+}
+
+export { viewContacts, viewFormulario, viewTareas, viewNewTarea, logout };
