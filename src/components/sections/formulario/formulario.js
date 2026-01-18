@@ -1,4 +1,5 @@
 import { ContactList } from "../contactos/db.js";
+import { viewContacts } from "../../layout/nav/NavControles.js"; 
 
 let Formulario = () => {
     let sectionForm = document.createElement('section');
@@ -28,30 +29,44 @@ let Formulario = () => {
         return { container, input };
     };
 
-    let nombreCampo = crearCampo("Nombre:", "text", "Ej: Giorno Giovanna");
+    // --- NUEVOS CAMPOS ---
+    let aliasCampo = crearCampo("Alias:", "text", "Ej: Golden Expirience");
+    let nombreCampo = crearCampo("Nombre Completo:", "text", "Ej: Giorno Giovanna");
     let telCampo = crearCampo("Teléfono:", "tel", "Ej: +502 1234 5678");
+    let correoCampo = crearCampo("Correo Electrónico:", "email", "ejemplo@correo.com");
 
     let btnSubmit = document.createElement("button");
     btnSubmit.type = "submit";
     btnSubmit.textContent = "Guardar Contacto";
 
+    form.appendChild(aliasCampo.container);
     form.appendChild(nombreCampo.container);
     form.appendChild(telCampo.container);
+    form.appendChild(correoCampo.container);
     form.appendChild(btnSubmit);
+    
     sectionForm.appendChild(form);
-
-    //Programacion del formulario   
-    form.addEventListener("submit", (e)=> {
+   
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-            let contacto = {
-        nombre: nombreCampo.input.value,
-        telefono: telCampo.input.value
-    };   
-        console.log(contacto);
+        
+        let contacto = {
+            alias: aliasCampo.input.value,
+            nombre: nombreCampo.input.value,
+            telefono: telCampo.input.value,
+            correo: correoCampo.input.value,
+            imagen: "Perfil.svg"
+        };   
+
+        console.log("Datos capturados:", contacto);
         ContactList.push(contacto);
-        console.log("Contacto Agregado existosamente.");
-        //limpiar el formulario
+        
+        alert("Contacto Agregado exitosamente.");
         form.reset();
+
+        if (typeof viewContacts === "function") {
+            viewContacts();
+        }
     });
 
     return sectionForm;

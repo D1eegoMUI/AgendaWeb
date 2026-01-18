@@ -1,4 +1,4 @@
-import  { ItemContacto } from "../../common/itemContacto/ItemContacto.js"
+import { ItemContacto } from "../../common/itemContacto/ItemContacto.js"
 import { ContactList } from "./db.js";
 
 let Contactos = () => {
@@ -10,8 +10,15 @@ let Contactos = () => {
     sectionContactos.appendChild(h2);
 
     ContactList.forEach((contacto) => {
-        sectionContactos.appendChild(ItemContacto("Perfil.svg", 
-            contacto.nombre, contacto.telefono));
+        sectionContactos.appendChild(
+            ItemContacto(
+                "Perfil.svg",
+                contacto.alias,    // parámetro 'alias' 
+                contacto.nombre,   // parámetro 'nombre'
+                contacto.telefono, // parámetro 'telefono'
+                contacto.correo    // parámetro 'correo'
+            )
+        );
     });
 
     return sectionContactos;
