@@ -13,10 +13,10 @@ let Contactos = () => {
         sectionContactos.appendChild(
             ItemContacto(
                 "Perfil.svg",
-                contacto.alias,    // parámetro 'alias' 
-                contacto.nombre,   // parámetro 'nombre'
-                contacto.telefono, // parámetro 'telefono'
-                contacto.correo    // parámetro 'correo'
+                contacto.alias, 
+                contacto.nombre, 
+                contacto.telefono,
+                contacto.correo   
             )
         );
     });

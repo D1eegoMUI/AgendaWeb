@@ -26,10 +26,6 @@ let viewNewTarea = function () {
 }
 
 let logout = function () {
-    // Si usas localStorage o sessionStorage para el login, límpialos aquí:
-    // localStorage.removeItem("token"); 
-
-    // Redirige al index.html
     window.location.href = "../index.html";
 }
 

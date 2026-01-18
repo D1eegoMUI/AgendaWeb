@@ -1,5 +1,4 @@
 export const mostrarModal = (titulo, contenido) => {
-    // Crear el fondo
     const overlay = document.createElement("div");
     overlay.className = "modal-overlay";
 
@@ -13,11 +12,10 @@ export const mostrarModal = (titulo, contenido) => {
         <button class="btn-cerrar-modal">Cerrar</button>
     `;
 
-    // Lógica para cerrar
     const cerrar = () => overlay.remove();
     modal.querySelector(".btn-cerrar-modal").onclick = cerrar;
     overlay.onclick = (e) => { if(e.target === overlay) cerrar(); };
 
     overlay.appendChild(modal);
-    document.body.appendChild(overlay); // Se agrega al body para que esté por encima de todo
+    document.body.appendChild(overlay);
 };

@@ -29,7 +29,6 @@ let Formulario = () => {
         return { container, input };
     };
 
-    // --- NUEVOS CAMPOS ---
     let aliasCampo = crearCampo("Alias:", "text", "Ej: Golden Expirience");
     let nombreCampo = crearCampo("Nombre Completo:", "text", "Ej: Giorno Giovanna");
     let telCampo = crearCampo("Teléfono:", "tel", "Ej: +502 1234 5678");

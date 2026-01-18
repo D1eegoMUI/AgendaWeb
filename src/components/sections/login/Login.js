@@ -20,7 +20,7 @@ let login = function () {
     let button = document.createElement("button");
     button.innerHTML = "Iniciar Sesion";
     
-  //Nota de credenciales de prueba
+    //credenciales de prueba
     let notaCredenciales = document.createElement("div");
     notaCredenciales.classList.add("login-note");
     notaCredenciales.innerHTML = `
