@@ -1,5 +1,6 @@
 import { TareaList } from "./dbTarea.js";
 import { mostrarModal } from "../../common/Modal/Modal.js";
+import { saveTareasToStorage } from "../../common/LocalStorage/storage.js";
 
 let Tareas = () => {
     let section = document.createElement('section');
@@ -49,6 +50,9 @@ let Tareas = () => {
 
         selEstado.onchange = (e) => {
             tarea.estado = e.target.value;
+            // Actualiza el storage cuando cambie de estado
+            saveTareasToStorage(TareaList);
+             
             const nuevaClase = tarea.estado.toLowerCase().replace(/\s+/g, '-');
             card.className = `tarea-card ${nuevaClase}`;
             

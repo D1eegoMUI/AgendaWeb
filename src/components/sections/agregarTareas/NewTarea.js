@@ -1,4 +1,5 @@
 import { TareaList } from "../tareas/dbTarea.js";
+import { saveTareasToStorage } from "../../common/LocalStorage/storage.js";
 
 let NewTarea = () => {
     let sectionForm = document.createElement('section');
@@ -56,6 +57,9 @@ let NewTarea = () => {
         };
         console.log(tarea);
         TareaList.push(tarea);
+        // Guardar en LocalStorage
+        saveTareasToStorage(TareaList);
+        
         console.log("Tarea agregada exitosamente.");
         form.reset();
     });
