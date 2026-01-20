@@ -1,4 +1,6 @@
-/* Estructura base de la tarjeta */
+/* --- ITEM TAREA COMPLETO --- */
+
+/* 1. Estructura base de la tarjeta */
 .tarea-card {
     background: white;
     padding: 1.5rem;
@@ -17,7 +19,7 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Variaciones por estado */
+/* 2. Variaciones por estado */
 .tarea-card.pendiente { 
     border-left-color: var(--warning); 
     background: linear-gradient(to right, #fff9f0, #fff);
@@ -36,11 +38,11 @@
     color: var(--text-light);
 }
 
-/* Elementos internos */
+/* 3. Elementos internos */
 .tarea-card h3 { margin: 0; font-size: 1.15rem; color: var(--text-dark); }
 .tarea-card p { margin: 0; font-size: 0.9rem; color: var(--text-light); }
 
-/* Acciones y Controles */
+/* 4. Acciones y Controles de la Vista Principal */
 .tarea-card-actions {
     display: flex;
     justify-content: space-between;
@@ -71,4 +73,73 @@
     color: var(--primary-dark);
     border: 1px solid var(--primary);
     width: 140px;
+}
+
+/* --- 5. SECCIÓN NUEVA: MODO EDICIÓN DENTRO DEL MODAL --- */
+
+/* Contenedor del formulario de edición */
+#modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 0;
+    text-align: left; /* Alineación para etiquetas */
+}
+
+#modal-container label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: -5px;
+}
+
+/* Inputs y Selects del Modal */
+#modal-container textarea,
+#modal-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#modal-container textarea:focus,
+#modal-container select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Botones específicos del Modal */
+#btn-edit-mode {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#btn-save-modal {
+    background-color: #10b981; /* Color verde éxito */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+#btn-save-modal:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
 }

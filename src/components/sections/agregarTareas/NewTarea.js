@@ -61,8 +61,8 @@ let NewTarea = () => {
         storedTareas.push(tarea);
         // Guardar en LocalStorage
         saveTareasToStorage(storedTareas);
+        alert("Tarea Agregada exitosamente.");
         
-        console.log("Tarea agregada exitosamente.");
         form.reset();
     });
 

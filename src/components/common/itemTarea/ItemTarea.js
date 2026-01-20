@@ -3,12 +3,13 @@ import { saveTareasToStorage } from "../../common/LocalStorage/storage.js";
 import { storedTareas } from "../../sections/agregarTareas/NewTarea.js";
 
 let ItemTarea = (tarea) => {
-    // 1. Crear el contenedor principal de la tarea
     let card = document.createElement("div");
-    const claseEstado = tarea.estado.toLowerCase().replace(/\s+/g, '-');
-    card.className = `tarea-card ${claseEstado}`;
+    const actualizarClase = () => {
+        const claseEstado = tarea.estado.toLowerCase().replace(/\s+/g, '-');
+        card.className = `tarea-card ${claseEstado}`;
+    };
+    actualizarClase();
 
-    // 2. Estructura de información
     card.innerHTML = `
         <div class="tarea-info">
             <h3>${tarea.nombre}</h3>
@@ -16,25 +17,73 @@ let ItemTarea = (tarea) => {
         </div>
     `;
 
-    // 3. Botón de Inspeccionar (Abrir Modal)
     let actionsDiv = document.createElement("div");
     actionsDiv.className = "tarea-card-actions";
 
+    // --- LÓGICA DEL MODAL CON EDICIÓN ---
     let btnVer = document.createElement("button");
     btnVer.innerHTML = `🤓 Inspeccionar`;
+    
     btnVer.onclick = () => {
-        const contenidoHtml = `
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <p><strong> Descripción:</strong><br>${tarea.descripcion}</p>
-                <p><strong> Relevancia:</strong> ${tarea.relevancia}</p>
-                <p><strong> Dificultad:</strong> ${tarea.dificultad}</p>
-                <p><strong> Estado:</strong> ${tarea.estado}</p>
-            </div>
-        `;
-        mostrarModal(`Detalles de: ${tarea.nombre}`, contenidoHtml);
+        // Función para generar el contenido dinámico del modal
+        const generarContenido = (editando = false) => {
+            if (!editando) {
+                return `
+                    <div id="modal-container">
+                        <p><strong>Descripción:</strong><br>${tarea.descripcion}</p>
+                        <p><strong>Relevancia:</strong> ${tarea.relevancia}</p>
+                        <p><strong>Dificultad:</strong> ${tarea.dificultad}</p>
+                        <button id="btn-edit-mode" style="margin-top:10px; width:100%">Editar Detalles</button>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div id="modal-container" style="display:flex; flex-direction:column; gap:8px;">
+                        <label>Descripción:</label>
+                        <textarea id="edit-desc" rows="3">${tarea.descripcion}</textarea>
+                        
+                        <label>Relevancia:</label>
+                        <select id="edit-rel">
+                            <option value="Alta" ${tarea.relevancia === 'Alta' ? 'selected' : ''}>Alta</option>
+                            <option value="Media" ${tarea.relevancia === 'Media' ? 'selected' : ''}>Media</option>
+                            <option value="Baja" ${tarea.relevancia === 'Baja' ? 'selected' : ''}>Baja</option>
+                        </select>
+
+                        <label>Dificultad:</label>
+                        <select id="edit-dif">
+                            <option value="Fácil" ${tarea.dificultad === 'Fácil' ? 'selected' : ''}>Fácil</option>
+                            <option value="Media" ${tarea.dificultad === 'Media' ? 'selected' : ''}>Media</option>
+                            <option value="Difícil" ${tarea.dificultad === 'Difícil' ? 'selected' : ''}>Difícil</option>
+                        </select>
+                        <button id="btn-save-modal" style="background:#10b981; color:white; border:none; padding:8px; border-radius:4px; margin-top:10px;">Guardar Cambios</button>
+                    </div>
+                `;
+            }
+        };
+
+        const refrescarModal = (modoEdicion) => {
+            const cuerpoModal = document.querySelector(".modal-body");
+            cuerpoModal.innerHTML = generarContenido(modoEdicion);
+
+            if (!modoEdicion) {
+                document.getElementById("btn-edit-mode").onclick = () => refrescarModal(true);
+            } else {
+                document.getElementById("btn-save-modal").onclick = () => {
+                    tarea.descripcion = document.getElementById("edit-desc").value;
+                    tarea.relevancia = document.getElementById("edit-rel").value;
+                    tarea.dificultad = document.getElementById("edit-dif").value;
+
+                    saveTareasToStorage(storedTareas); 
+                    
+                    refrescarModal(false);
+                };
+            }
+        };
+
+        mostrarModal(`Tarea: ${tarea.nombre}`, generarContenido(false));
+        refrescarModal(false);
     };
 
-    // 4. Selector de Estado
     let selEstado = document.createElement("select");
     ["Pendiente", "En Proceso", "Completada"].forEach(est => {
         let opt = document.createElement("option");
@@ -46,13 +95,10 @@ let ItemTarea = (tarea) => {
     selEstado.onchange = (e) => {
         tarea.estado = e.target.value;
         saveTareasToStorage(storedTareas);
-        
-        const nuevaClase = tarea.estado.toLowerCase().replace(/\s+/g, '-');
-        card.className = `tarea-card ${nuevaClase}`;
+        actualizarClase();
         card.querySelector('strong').textContent = tarea.estado;
     };
 
-    // 5. Ensamblaje y Retorno
     actionsDiv.appendChild(btnVer);
     actionsDiv.appendChild(selEstado);
     card.appendChild(actionsDiv);
