@@ -19,44 +19,49 @@ body {
 
 #app {
     display: grid;
-    grid-template-columns: 250px 1fr; /* Menú lateral fijo */
+    grid-template-columns: 250px 1fr;
     min-height: 100vh;
 }
 
-/* Navegación Lateral */
+/* Navegación Lateral (Escritorio) */
 #nav {
     background-color: #0f172a;
     padding: 2rem 1rem;
     display: flex;
-    flex-direction: column; /* Alineación vertical */
-    height: 100vh;          /* Altura completa de la ventana */
+    flex-direction: column;
+    height: 100vh;
     position: sticky;
     top: 0;
     color: white;
-    box-sizing: border-box; /* Asegura que el padding no rompa el alto */
+    box-sizing: border-box;
 }
 
-#btn-logout-at-bottom, .btn-logout {
-    margin-top: auto;   
-    padding: 12px;
-    background-color: #ef4444; 
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
+/* RESPONSIVE: Ajustes para Móviles */
+@media (max-width: 768px) {
+    #app {
+        /* Pasamos de 2 columnas a 1 sola columna vertical */
+        grid-template-columns: 1fr;
+    }
 
-#btn-logout-at-bottom:hover, .btn-logout:hover {
-    background-color: #dc2626;
-}
+    #nav {
+        /* El nav ya no ocupa todo el alto, se adapta al contenido */
+        height: auto;
+        position: relative; /* O 'sticky' si quieres que el menú flote arriba */
+        padding: 1rem;
+        flex-direction: row; /* Elementos uno al lado del otro */
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Por si tienes muchos enlaces */
+    }
 
-/* Contenedor de contenido */
-#container {
-    padding: 2rem;
-    overflow-y: auto;
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
+    #btn-logout-at-bottom, .btn-logout {
+        /* Quitamos el margen automático para que no se dispare al fondo */
+        margin-top: 0;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    #container {
+        padding: 1rem; /* Reducimos espacio en móviles */
+    }
 }
