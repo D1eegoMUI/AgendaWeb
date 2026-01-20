@@ -37,7 +37,7 @@ body {
 }
 
 /* RESPONSIVE: Ajustes para Móviles */
-@media (max-width: 768px) {
+@media (max-width: 535px) {
     #app {
         /* Pasamos de 2 columnas a 1 sola columna vertical */
         grid-template-columns: 1fr;
