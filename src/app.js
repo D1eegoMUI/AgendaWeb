@@ -26,3 +26,16 @@ let container = document.getElementById("container");
 
 container.innerHTML = "";//limpio el contenedor
 container.appendChild(Contactos());
+
+async function tareas() {
+    try {
+        let data = await fetch("https://jsonplaceholder.typicode.com/posts");
+        let r = await data.json();
+        console.log(r);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+tareas();
+console.log("completado");

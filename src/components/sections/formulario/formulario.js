@@ -1,5 +1,7 @@
-import { ContactList } from "../contactos/db.js";
+import { getContactsFromStorage } from "../../common/LocalStorage/storage.js";
 import { saveContactsToStorage } from "../../common/LocalStorage/storage.js";
+
+let storedContacts = getContactsFromStorage();
 
 let Formulario = () => {
     let sectionForm = document.createElement('section');
@@ -58,9 +60,9 @@ let Formulario = () => {
         };   
 
         console.log("Datos capturados:", contacto);
-        ContactList.push(contacto);
+        storedContacts.push(contacto);
         // Guardar en LocalStorage
-        saveContactsToStorage(ContactList);
+        saveContactsToStorage(storedContacts);
         
         alert("Contacto Agregado exitosamente.");
         form.reset();
@@ -73,4 +75,4 @@ let Formulario = () => {
     return sectionForm;
 }
 
-export { Formulario };
+export { Formulario, storedContacts };

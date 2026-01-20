@@ -1,4 +1,4 @@
-import { TareaList } from "./dbTarea.js";
+import { storedTareas } from "../agregarTareas/NewTarea.js";
 import { mostrarModal } from "../../common/Modal/Modal.js";
 import { saveTareasToStorage } from "../../common/LocalStorage/storage.js";
 
@@ -10,7 +10,7 @@ let Tareas = () => {
     h2.textContent = "Mis Tareas";
     section.appendChild(h2);
 
-    TareaList.forEach((tarea) => {
+    storedTareas.forEach((tarea) => {
         let card = document.createElement("div");
         
         const claseEstado = tarea.estado.toLowerCase().replace(/\s+/g, '-');
@@ -51,7 +51,7 @@ let Tareas = () => {
         selEstado.onchange = (e) => {
             tarea.estado = e.target.value;
             // Actualiza el storage cuando cambie de estado
-            saveTareasToStorage(TareaList);
+            saveTareasToStorage(storedTareas);
              
             const nuevaClase = tarea.estado.toLowerCase().replace(/\s+/g, '-');
             card.className = `tarea-card ${nuevaClase}`;

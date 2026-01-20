@@ -1,5 +1,5 @@
 import { ItemContacto } from "../../common/itemContacto/ItemContacto.js"
-import { ContactList } from "./db.js";
+import { storedContacts } from "../formulario/formulario.js";
 
 let Contactos = () => {
     let sectionContactos = document.createElement('section');
@@ -9,7 +9,7 @@ let Contactos = () => {
     h2.textContent = "Contactos";
     sectionContactos.appendChild(h2);
 
-    ContactList.forEach((contacto) => {
+    storedContacts.forEach((contacto) => {
         sectionContactos.appendChild(
             ItemContacto(
                 "Perfil.svg",
