@@ -1,0 +1,74 @@
+/* Estructura base de la tarjeta */
+.tarea-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    border-left: 8px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarea-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Variaciones por estado */
+.tarea-card.pendiente { 
+    border-left-color: var(--warning); 
+    background: linear-gradient(to right, #fff9f0, #fff);
+}
+.tarea-card.en-proceso { 
+    border-left-color: var(--primary); 
+    background: linear-gradient(to right, #f0f7ff, #fff);
+}
+.tarea-card.completada { 
+    border-left-color: var(--success); 
+    background: #f8fafc;
+    opacity: 0.8;
+}
+.tarea-card.completada h3 {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+/* Elementos internos */
+.tarea-card h3 { margin: 0; font-size: 1.15rem; color: var(--text-dark); }
+.tarea-card p { margin: 0; font-size: 0.9rem; color: var(--text-light); }
+
+/* Acciones y Controles */
+.tarea-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
+}
+
+.tarea-card button, 
+.tarea-card select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tarea-card button {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border: 1px solid #cbd5e1;
+}
+
+.tarea-card select {
+    background-color: white;
+    color: var(--primary-dark);
+    border: 1px solid var(--primary);
+    width: 140px;
+}
