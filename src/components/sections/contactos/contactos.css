@@ -1,10 +1,18 @@
+/* Contenedor de la sección */
 .contactos {
-    display: flex; /* Cambiamos de grid a flex */
-    flex-direction: column; /* Alineamos los elementos en columna (hacia abajo) */
-    gap: 1rem; /* Espacio entre cada contacto */
-    max-width: 600px; /* Opcional: limita el ancho para que no se vea tan estirado en pantallas grandes */
-    margin: 0 auto; /* Centra la lista en el contenedor principal */
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
+
+.contactos h2 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
 
 /* Ajuste opcional para que la tarjeta ocupe el 100% del ancho del contenedor */
 .item-contacto {

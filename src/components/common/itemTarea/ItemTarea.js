@@ -20,12 +20,10 @@ let ItemTarea = (tarea) => {
     let actionsDiv = document.createElement("div");
     actionsDiv.className = "tarea-card-actions";
 
-    // --- LÓGICA DEL MODAL CON EDICIÓN ---
     let btnVer = document.createElement("button");
     btnVer.innerHTML = `🤓 Inspeccionar`;
     
     btnVer.onclick = () => {
-        // Función para generar el contenido dinámico del modal
         const generarContenido = (editando = false) => {
             if (!editando) {
                 return `

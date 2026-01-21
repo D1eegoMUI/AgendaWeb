@@ -61,6 +61,7 @@ let Formulario = () => {
 
         console.log("Datos capturados:", contacto);
         storedContacts.push(contacto);
+        
         // Guardar en LocalStorage
         saveContactsToStorage(storedContacts);
         
